@@ -6,7 +6,7 @@ import 'package:shopping_app/models/product.dart';
 class ProductState with ChangeNotifier {
   List<Product> _product = [
     Product(
-      id: "product_1",     
+      id: "product_1",
       title: "product_title_1",
       description: "product_description_1",
       price: 11,
@@ -57,5 +57,9 @@ class ProductState with ChangeNotifier {
 
   List<Product> get product {
     return [..._product];
+  }
+
+  Product singleProduct(String id) {
+    return _product.firstWhere((element) => element.id == id);
   }
 }

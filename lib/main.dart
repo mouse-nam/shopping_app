@@ -3,6 +3,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:shopping_app/screens/home.screen.dart';
+import 'package:shopping_app/screens/product_details_screen.dart';
 import 'package:shopping_app/state/product_state.dart';
 
 void main() {
@@ -28,6 +29,7 @@ class MyApp extends StatelessWidget {
         debugShowCheckedModeBanner: false,
         routes: {
           HomeScreen.routeName: (context) => HomeScreen(),
+          ProductDetailsScreen.routeName: (context) => ProductDetailsScreen(),
         },
       ),
     );
