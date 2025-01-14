@@ -1,5 +1,6 @@
 // ignore_for_file: prefer_const_constructors
 
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:shopping_app/models/product.dart';
@@ -32,7 +33,15 @@ class ProductDetailsScreen extends StatelessWidget {
               style: TextStyle(fontSize: 20),
             ),
             SizedBox(height: 10),
-            Text(product.description),
+            Text(
+              "\$${product.price}",
+              style: TextStyle(fontSize: 20),
+            ),
+            SizedBox(height: 10),
+            Text(
+              product.description,
+              style: TextStyle(fontSize: 20),
+            ),
           ],
         ),
       ),

@@ -12,6 +12,21 @@ class HomeScreen extends StatelessWidget {
       appBar: AppBar(
         backgroundColor: Colors.green,
         title: Text('Home'),
+        actions: [
+          PopupMenuButton(
+            itemBuilder: (_) => [
+              PopupMenuItem(
+                child: Text("All products"),
+                value: 0,
+              ),
+              PopupMenuItem(
+                child: Text("Favourite products"),
+                value: 0,
+              ),
+            ],
+            icon: Icon(Icons.more_vert),
+          ),
+        ],
       ),
       body: AllProducts(),
     );

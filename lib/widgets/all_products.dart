@@ -20,11 +20,9 @@ class AllProducts extends StatelessWidget {
         childAspectRatio: 3 / 2,
       ),
       itemCount: product.length,
-      itemBuilder: (context, i) => SingleProduct(
-        id: product[i].id,
-        title: product[i].title,
-        price: product[i].price,
-        imageUrl: product[i].imageUrl,
+      itemBuilder: (context, i) => ChangeNotifierProvider.value(
+        value: product[i],
+        child: SingleProduct(),
       ),
     );
   }

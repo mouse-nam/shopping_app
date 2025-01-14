@@ -1,25 +1,17 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import 'package:shopping_app/models/product.dart';
 import 'package:shopping_app/screens/product_details_screen.dart';
 
 class SingleProduct extends StatelessWidget {
-  final String id;
-  final String title;
-  final double price;
-  final String imageUrl;
-  SingleProduct({
-    required this.id,
-    required this.title,
-    required this.price,
-    required this.imageUrl,
-  });
-
   @override
   Widget build(BuildContext context) {
+    final product = Provider.of<Product>(context);
     return GridTile(
       header: GridTileBar(
         backgroundColor: Colors.black54,
         title: Text(
-          title,
+          product.title,
           textAlign: TextAlign.center,
           style: TextStyle(
             fontSize: 18,
@@ -28,14 +20,16 @@ class SingleProduct extends StatelessWidget {
       ),
       footer: GridTileBar(
         leading: IconButton(
-          onPressed: () {},
+          onPressed: () {
+            product.toggleFavoriteStatus();
+          },
           icon: Icon(
-            Icons.favorite_border,
+            product.isFavorite ? Icons.favorite : Icons.favorite_border,
             color: Colors.red,
           ),
         ),
         title: Text(
-          "\$$price",
+          "\$$product.price",
           textAlign: TextAlign.center,
           style: TextStyle(fontSize: 18),
         ),
@@ -44,9 +38,9 @@ class SingleProduct extends StatelessWidget {
       child: GestureDetector(
         onTap: () {
           Navigator.of(context)
-              .pushNamed(ProductDetailsScreen.routeName, arguments: id);
+              .pushNamed(ProductDetailsScreen.routeName, arguments: product.id);
         },
-        child: Image.network(imageUrl, height: 100, width: 100),
+        child: Image.network(product.imageUrl, height: 100, width: 100),
       ),
     );
   }
