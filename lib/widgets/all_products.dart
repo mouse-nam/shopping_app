@@ -6,7 +6,8 @@ import 'package:shopping_app/state/product_state.dart';
 import 'package:shopping_app/widgets/single_product.dart';
 
 class AllProducts extends StatelessWidget {
-  const AllProducts({super.key});
+  final bool favoriteOnly;
+  AllProducts(this.favoriteOnly);
 
   @override
   Widget build(BuildContext context) {

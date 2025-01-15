@@ -3,9 +3,15 @@
 import 'package:flutter/material.dart';
 import 'package:shopping_app/widgets/all_products.dart';
 
-class HomeScreen extends StatelessWidget {
+class HomeScreen extends StatefulWidget {
   static const routeName = '/';
 
+  @override
+  State<HomeScreen> createState() => _HomeScreenState();
+}
+
+class _HomeScreenState extends State<HomeScreen> {
+  bool favoriteOnly = false;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -14,6 +20,13 @@ class HomeScreen extends StatelessWidget {
         title: Text('Home'),
         actions: [
           PopupMenuButton(
+            onSelected: (key) {
+              if (key == 0) {
+                favoriteOnly = false;
+              } else {
+                favoriteOnly = true;
+              }
+            },
             itemBuilder: (_) => [
               PopupMenuItem(
                 child: Text("All products"),
@@ -21,14 +34,14 @@ class HomeScreen extends StatelessWidget {
               ),
               PopupMenuItem(
                 child: Text("Favourite products"),
-                value: 0,
+                value: 1,
               ),
             ],
             icon: Icon(Icons.more_vert),
           ),
         ],
       ),
-      body: AllProducts(),
+      body: AllProducts(favoriteOnly),
     );
   }
 }
